@@ -6,3 +6,4 @@ Intentionally Vulnerable Blog Web Application
 Run with: `FLASK_APP=vulnblog FLASK_ENV=development python3 -m flask run`  
 Test with: `coverage run -m pytest`  
 
+Some minor edit
