@@ -61,6 +61,12 @@ def create():
 
     return redirect(url_for('blog.index'))
 
+@bp.route('/<int:post_id>/something/<string:title>', methods=('GET', 'POST'))
+def vuln(post_id, title):
+    db = get_db()
+    db.execute( 'UPDATE post SET title = "'+title+'" WHERE id = '+post_id)
+    return redirect(url_for('blog.index'))
+
 
 @bp.route('/<int:post_id>/update', methods=('GET', 'POST'))
 @login_required
@@ -82,7 +88,9 @@ def update(post_id):
     else:
         db = get_db()
         db.execute(
-            'UPDATE post SET title = "'+title+'", body = "'+body+'" WHERE id = '+post_id
+            'UPDATE post SET title = ?, body = ?'
+            ' WHERE id = ? ',
+            (title, body, post_id)
         )
         db.commit()
 
