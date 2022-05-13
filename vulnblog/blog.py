@@ -82,7 +82,7 @@ def update(post_id):
     else:
         db = get_db()
         db.execute(
-            'UPDATE post SET title = '+title+', body = '+body+' WHERE id = '+post_id
+            'UPDATE post SET title = "'+title+'", body = "'+body+'" WHERE id = '+post_id
         )
         db.commit()
 
