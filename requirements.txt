@@ -1,4 +1,4 @@
-coverage
+coverage==6.3.3
 pytest
 flask
 werkzeug
